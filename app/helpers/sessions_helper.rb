@@ -24,7 +24,7 @@ module SessionsHelper
       #raise       # テストがパスすれば、この部分がテストされていないことがわかる
                    # エラーを発生させる。（引数で発生エラーを指定出来る。）
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         log_in user
         @current_user = user
       end
